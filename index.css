@@ -1,0 +1,127 @@
+@charset "UTF-8";
+* {
+  font-family: "微軟正黑體";
+}
+
+body, html {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 400px;
+  height: 350px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  border-radius: 10px;
+}
+.container .rgb {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin: 20px;
+  margin-top: -20px;
+}
+.container .hex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 300px;
+}
+
+.red, .green, .blue {
+  display: -webkit-box;
+  display: flex;
+  font-size: 20px;
+  margin: 5px;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.red span, .red .color_box1, .green span, .green .color_box1, .blue span, .blue .color_box1 {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-right: 10px;
+  font-size: 20px;
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  color: white;
+}
+.red .color_box1, .green .color_box1, .blue .color_box1 {
+  border: none;
+  width: 80px;
+  height: 30px;
+  margin: 15px;
+  padding: 15px;
+  text-align: center;
+}
+
+.red span, .red .color_box1 {
+  background-color: red;
+}
+
+.green span, .green .color_box1 {
+  background-color: green;
+}
+
+.blue span, .blue .color_box1 {
+  background-color: blue;
+}
+
+.color_number {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 250px;
+  border-radius: 10px;
+}
+.color_number span, .color_number .hex_number {
+  font-size: 30px;
+  font-weight: 900;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.5);
+}
+.color_number span {
+  margin-right: 5px;
+}
+.color_number .hex_number {
+  border: none;
+  width: 120px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
