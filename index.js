@@ -9,7 +9,6 @@ let green_color_box = document.querySelector("#green_box")
 let blue_color_box = document.querySelector("#blue_box")
 let hex_color_box = document.querySelector("body")
 
-let ball = document.querySelector(".ball")
 // 初始值
 red_color_box.value = "0"
 green_color_box.value = "0"
@@ -26,7 +25,6 @@ all_regbox = []
 
 // slider被拉動時，右邊數字變動，下面HEX色碼變動
 red_number.addEventListener('oninput', red_event)
-
 red_color_box.addEventListener('keydown', red_event)
 function red_event() {
   slider(0)
@@ -143,33 +141,4 @@ function testnumber(number) {
     num_box.push(number)
   }
   // console.log(num_box)
-}
-
-
-
-
-
-// // a是餘數
-// let a=100%16
-// // b是整除的數
-// let b=Math.floor(100/16)
-// let c=Math.floor(b/16)
-// let d=b%16
-// console.log(a)
-// console.log(b)
-// console.log(c)
-// console.log(d)
-
-
-function change() {
-  let blPercent = parseFloat(blue_number.value / 255, 2) * 100
-  let redPercent = parseFloat(red_number.value / 255, 2) * 100
-  // console.log(blPercent,redPercent)
-  // const speedPercent = parseFloat((spdVal),2) * 100
-  blue_number.style.backgroundSize = `${blPercent}%, 100%`
-  red_number.style.background = `linear-gradient(to right, #ffa200, white ${redPercent}%, white`
-}
-function recolor(color) {
-  event.target.value
-  ball.style.backgroundColor = ""
 }
