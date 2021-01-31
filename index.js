@@ -1,56 +1,65 @@
 // 定義變數-從html抓取
-const red_number = document.querySelector("#red_number")
-const green_number = document.querySelector("#green_number")
-const blue_number = document.querySelector("#blue_number")
-const hex_number = document.querySelector("#hex_number")
+let red_number = document.querySelector("#red_number")
+let green_number = document.querySelector("#green_number")
+let blue_number = document.querySelector("#blue_number")
+let hex_number = document.querySelector("#hex_number")
 
-const red_color_box = document.querySelector("#red_box")
-const green_color_box = document.querySelector("#green_box")
-const blue_color_box = document.querySelector("#blue_box")
-const hex_color_box = document.querySelector(".container")
+let red_color_box = document.querySelector("#red_box")
+let green_color_box = document.querySelector("#green_box")
+let blue_color_box = document.querySelector("#blue_box")
+let hex_color_box = document.querySelector("body")
+
+let ball = document.querySelector(".ball")
 // 初始值
 red_color_box.value = "0"
 green_color_box.value = "0"
 blue_color_box.value = "0"
 hex_color_box.style.backgroundColor = "#000000"
+red_color_box.style.backgroundColor = "#000000"
+green_color_box.style.backgroundColor = "#000000"
+blue_color_box.style.backgroundColor = "#000000"
 // 定義變數-計算用
 all_rembox = ["00", "00", "00"]
 num_box = []
 all_regbox = []
 
 
-// 事件監聽器-slider被拉動時，右邊數字變動，下面HEX色碼變動
+// slider被拉動時，右邊數字變動，下面HEX色碼變動
 red_number.addEventListener('oninput', red_event)
 
+red_color_box.addEventListener('keydown', red_event)
 function red_event() {
   slider(0)
   red_color_box.value = event.target.value
+  red_color_box.style.backgroundColor = "#" + all_rembox[0] + "0000"
 }
 green_number.addEventListener('oninput', green_event)
+green_color_box.addEventListener('keydown', green_event)
 function green_event() {
   slider(1)
   green_color_box.value = event.target.value
-
+  green_color_box.style.backgroundColor = "#" + "00" + all_rembox[1] + "00"
 }
 blue_number.addEventListener('oninput', blue_event)
+blue_color_box.addEventListener('keydown', blue_event)
 function blue_event() {
   slider(2)
   blue_color_box.value = event.target.value
-
+  blue_color_box.style.backgroundColor = "#" + "0000" + all_rembox[2]
 }
 
 // 函式-slider移動
 function slider(i) {
   all_rembox[i] = event.target.value
   // console.log(event.target.value)
-  rgbToHex(all_rembox[i], i)
+  rgb_To_hex(all_rembox[i], i)
   hex_number.value = all_rembox.join('')
   hex_color_box.style.backgroundColor = "#" + hex_number.value
 }
 
 // rgb->hex
-// 函式1.將十進位轉換成十六進位
-function rgbToHex(number, i) {
+// 函式-將十進位轉換成十六進位
+function rgb_To_hex(number, i) {
   // remainder1是第一個餘數
   unit_rembox = []
   let rem1 = number % 16
@@ -61,9 +70,9 @@ function rgbToHex(number, i) {
   // remainder2是第二個餘數
   rem2 = int % 16
   // 如果第一個餘數介於10-15之間，則轉換成英文字母，否則轉換為數字字串
-  checkNumToAlphabet(rem2)
+  check_num_to_Alph(rem2)
   // 如果第二個餘數介於10-15之間，則轉換成英文字母，否則轉換為數字字串
-  checkNumToAlphabet(rem1)
+  check_num_to_Alph(rem1)
   unit_rembox.forEach(function (item) {
     hex += item
   })
@@ -73,8 +82,8 @@ function rgbToHex(number, i) {
 }
 
 
-// 函式2.如果餘數介於10-15之間，則轉換成英文字母，否則轉換為數字字串
-function checkNumToAlphabet(num) {
+// 函式-如果餘數介於10-15之間，則轉換成英文字母，否則轉換為數字字串
+function check_num_to_Alph(num) {
   if (9 < num && num < 16) {
     let alpha = String.fromCharCode(num + 55)
     unit_rembox.push(alpha)
@@ -85,7 +94,8 @@ function checkNumToAlphabet(num) {
 }
 
 
-// 將hex色碼輸入格裝上監聽器-輸入hex色碼，將色碼拆成兩兩一組字串來做解析，將各組解析成十進位後存入all_regbox[]
+
+// hex->rgb
 hex_number.addEventListener('oninput', hex_number_event)
 function hex_number_event() {
   if (hex_number.value.length <= 6) {
@@ -107,8 +117,8 @@ function hex_number_event() {
     all_regbox = []
   }
 }
-// hex->rgb
-// 函式1.hex輸入六個值，兩個數字一組，轉換成十進位制後裝入num_box=[]
+
+// 函式-hex輸入六個值，兩個數字一組，轉換成十進位制
 function textchange(number) {
   let number_1 = number.slice(0, 1)
   testnumber(number_1)
@@ -122,7 +132,7 @@ function textchange(number) {
   all_regbox.push(change_rgb)
   num_box = []
 }
-// 函式2.若有A-F則轉換成數字
+// 函式-若有A-F則轉換成數字
 function testnumber(number) {
   let a = /[a-z]/i
   // let b = a.test(number);//true,說明有英文字母
@@ -134,6 +144,9 @@ function testnumber(number) {
   }
   // console.log(num_box)
 }
+
+
+
 
 
 // // a是餘數
@@ -148,3 +161,15 @@ function testnumber(number) {
 // console.log(d)
 
 
+function change() {
+  let blPercent = parseFloat(blue_number.value / 255, 2) * 100
+  let redPercent = parseFloat(red_number.value / 255, 2) * 100
+  // console.log(blPercent,redPercent)
+  // const speedPercent = parseFloat((spdVal),2) * 100
+  blue_number.style.backgroundSize = `${blPercent}%, 100%`
+  red_number.style.background = `linear-gradient(to right, #ffa200, white ${redPercent}%, white`
+}
+function recolor(color) {
+  event.target.value
+  ball.style.backgroundColor = ""
+}
